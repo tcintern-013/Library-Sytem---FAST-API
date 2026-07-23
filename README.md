@@ -88,3 +88,10 @@ Authorization: Bearer <access_token>
   "token_type": "bearer"
 }
 ```
+
+### Expected Profile Response
+```json
+{
+  "username": "alice"
+}
+```
