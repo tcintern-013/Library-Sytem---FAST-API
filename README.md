@@ -1,30 +1,31 @@
-I’m preparing a concise README content block that you can paste directly into your repository.
-
 # Library System using FastAPI
 
-A simple FastAPI-based library management system that uses SQLite for persistent storage.
+A simple FastAPI-based library management system with SQLite persistence and JWT-based authentication.
 
 ## Features
-- Create a book
-- View all books
-- View a single book
-- Update a book
-- Delete a book
+- Create, view, update, and delete books
+- Persist books in a SQLite database
 - Prevent duplicate book IDs
 - Store a creation timestamp for each book
+- User signup and login
+- Password hashing with bcrypt
+- JWT-based protected access to the /me endpoint
 
 ## Tech Stack
 - FastAPI
 - SQLAlchemy
 - SQLite
 - Pydantic
+- PyJWT
+- passlib
 
 ## Project Structure
-- main.py - FastAPI app routes
+- main.py - FastAPI routes and auth endpoints
 - models.py - SQLAlchemy models
 - schemas.py - Pydantic schemas
 - database.py - SQLite database configuration
 - crud.py - CRUD operations
+- auth.py - JWT and password hashing logic
 
 ## Installation
 ```bash
@@ -42,7 +43,32 @@ Once the server is running, open:
 http://127.0.0.1:8000/docs
 ```
 
-## Example Endpoints
+## Authentication Endpoints
+### Signup
+```bash
+POST /signup
+{
+  "username": "alice",
+  "password": "secret123"
+}
+```
+
+### Login
+```bash
+POST /login
+{
+  "username": "alice",
+  "password": "secret123"
+}
+```
+
+### Protected Route
+```bash
+GET /me
+Authorization: Bearer <access_token>
+```
+
+## Example Book Endpoints
 - POST /books
 - GET /books
 - GET /books/{book_id}
