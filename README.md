@@ -74,3 +74,9 @@ Authorization: Bearer <access_token>
 - GET /books/{book_id}
 - PUT /books/{book_id}
 - DELETE /books/{book_id}
+
+## Quick Test Flow
+1. Start the server with `uvicorn main:app --reload`
+2. Create a user at `/signup`
+3. Sign in at `/login` to get a JWT token
+4. Call `/me` with the token in the `Authorization` header
