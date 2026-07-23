@@ -80,3 +80,11 @@ Authorization: Bearer <access_token>
 2. Create a user at `/signup`
 3. Sign in at `/login` to get a JWT token
 4. Call `/me` with the token in the `Authorization` header
+
+### Expected Login Response
+```json
+{
+  "access_token": "<jwt-token>",
+  "token_type": "bearer"
+}
+```
