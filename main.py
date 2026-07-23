@@ -69,7 +69,11 @@ def create_book(book: schemas.BookCreate, db: Session = Depends(get_db)):
     existing = crud.get_book(db, book.id)
 
     if existing:
-        raise HTTPException(status_code=400, detail="Book ID already exists")
+        existing.title = book.title
+        existing.author = book.author
+        db.commit()
+        db.refresh(existing)
+        return existing
 
     new_book = models.Book(**book.model_dump())
     return crud.create_book(db, new_book)
